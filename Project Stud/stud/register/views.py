@@ -1,3 +1,9 @@
+'''
+NOTE:
+	THE POSTGRESQL DATABASE USERNAME AND PASSWORD SHALL BE EDITED BEFORE RUNNING THE SERVER
+	LINE NO.'S TO BE CHANGED ARE - line number 183 for the username and password and line number 209 for the user directory
+
+'''
 from django.shortcuts import render
 from django import forms
 from register.models import Admin,Student_data,Branch
@@ -175,8 +181,8 @@ def generate(request):
     admin_branch  = Admin.objects.get(email = email)
     # students = Student_data.objects.raw("SELECT roll_no FROM student_data WHERE b_code_id = '%s'"%admin_branch.branch_id)
     import psycopg2
-    connection = psycopg2.connect(user = 'pracuser',password = 'luvmanjaro',
-                                host = 'localhost', database = 'practice')
+    connection = psycopg2.connect(user = '',password = '',
+                                host = '', database = '')
     cursor = connection.cursor()
     cursor.execute("SELECT roll_no FROM student_data WHERE b_code_id = %s",(admin_branch.branch_id,))
     students = cursor.fetchall()                                
@@ -200,7 +206,7 @@ def generate(request):
     if admin_branch.branch_id == 'EC':
         directory = 'ec'
     
-    os.chdir(f"/home/shubh/Project Stud/stud/register/static/downloadable/{directory.lower()}")
+    os.chdir(f"/home/{REPLACE THIS WITH YOUR DIRECTORY}/Project Stud/stud/register/static/downloadable/{directory.lower()}")
     
     file_paths = []
     for root,directories,files in os.walk(directory):
