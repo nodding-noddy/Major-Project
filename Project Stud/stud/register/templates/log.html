@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+            <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Welcome {{name}}!</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Logout</a>
+          </nav>
+          {% endblock %}
+{% block body%}
+    {% comment %} <h2 style = "position: relative; left:100px;">Welcome {{name}}!</h2>
+     {% endcomment %}
+    <form method="post">
+    <h4 style = "position:absolute; top:162px; left:53px;">List of students</h4>
+	<div class="form-group" style = "position:absolute; top:220px; left:50px;">
+		<select class="form-control" name="student-id" action= "{% url 'generate' %}" method="post" >
+			{% for student in students %}
+				<option value="{{student.email}}">{{student.first_name}} {{student.last_name}} {{student.roll_no}}</option>
+				{% endfor %}
+				{% comment %} <div style= "position:relative; top:170px; left:70px">{{radio}}</div> {% endcomment %}
+</div>
+	</select>
+	</div>
+  <div style = "position:relative; top:192px; left:56px;">
+  <a href= "{% url 'generate' %}" method="post">Generate QR codes</a>    
+  {% comment %} <form> {% endcomment %}
+  <br/>
+  <br/>
+  </div>
+      <h4 style = "position:absolute; top:350px; left:56px">Students with below than average attendance</h4>
+      <br/>
+	<div class="form-group" style = "position:absolute; top:400px; left:56px">
+		<select class="form-control" name="student-id" action= "{% url 'generate' %}" method="post" >
+			{% for defaulter in defaulters %}
+				<option value="{{defaulter.email}}">{{defaulter.first_name}} {{defaulter.last_name}} {{defaulter.roll_no}}</option>
+				{% empty %}
+				<option value="{{defaulter.email}}">Found no defaulter students</option>
+
+				{% endfor %}
+		</select>
+	</div>
+  </div>
+{% endblock %}

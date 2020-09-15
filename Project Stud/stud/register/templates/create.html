@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href='{% static "css/account.css" %}'>
+    <title>Administrator Controls</title>
+</head>
+<body>
+    <nav>
+        <span>Administrator Controls</span>
+    </nav>
+        <form>
+        <table>
+            <tr>
+                <td colspan="4"> 
+                    <label for ="first">First Name</label>
+                    <input type="text" placeholder="Enter your first name" id="first">
+                    <label for = "last">Last Name</label>
+                    <input type="text" placeholder="Enter your last name" id="last"> 
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                    <label for ="email">Email</label>
+                    <input type="email" placeholder="Enter your email address">
+                    <label for = "pwd">Password</label>
+                    <input type="password" placeholder ="Enter a strong password" id = "pwd">
+                    <label for = "pwd2">Password</label>
+                    <input type="password" placeholder ="Confirm password" id = "pwd2">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

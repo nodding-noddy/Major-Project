@@ -1,0 +1,30 @@
+{% extends "layout.html"%}
+{% load static %}
+
+{% block heading %}
+            <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Welcome {{name}}!</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Logout</a>
+          </nav>
+          {% endblock %}
+          
+{% block body%}
+<h1>{{email}}</h1>
+<div style= "position:relative; top:200px; left:600px;">
+<img src="../static/images/croptick.jpg" width='200'>
+</div>
+<h3 style ="position:relative; top:200px; left:570px;">Your files are ready!</h3>
+{% if branch == "cs" %}
+<a style ="position:relative; top:200px; left:570px;" href = "../static/downloadable/cs/qrcodes.zip" download = "qrcode.zip">Click to download..</a>
+{% elif branch == 'me' %}
+<a style ="position:relative; top:200px; left:570px;" href = "../static/downloadable/me/qrcodes.zip" download = "qrcode.zip">Click to download..</a>
+{% elif branch == 'ec' %}
+<a style ="position:relative; top:200px; left:570px;" href = "../static/downloadable/ec/qrcodes.zip" download = "qrcode.zip">Click to download..</a>
+{% elif branch == 'it' %}
+<a style ="position:relative; top:200px; left:570px;" href = "../static/downloadable/it/qrcodes.zip" download = "qrcode.zip">Click to download..</a>
+{% elif branch == 'ex' %}
+<a style ="position:relative; top:200px; left:570px;" href = "../static/downloadable/ex/qrcodes.zip" download = "qrcode.zip">Click to download..</a>
+{% elif branch == 'ce' %}
+<a style ="position:relative; top:200px; left:570px;" href = "../static/downloadable/ce/qrcodes.zip" download = "qrcode.zip">Click to download..</a>
+{% endif %}
+{%endblock%}

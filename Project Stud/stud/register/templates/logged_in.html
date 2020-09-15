@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Welcome {{name}}!</a>
+    <a class="navbar-brand" href="{% url 'home' %}">Logout</a>
+</nav>
+{% endblock %}
+
+{% block body %}
+<form class = "form">
+    <table class = "spaces">
+        <tr>
+            <td>
+                <label for = "def-list">List Of Students</label>
+                <select id = "def-list" name="student-id" action= "{% url 'generate' %}" method="post" >
+                {% for student in students %}
+                <option value="{{student.email}}">{{student.first_name}} {{student.last_name}} {{student.roll_no}}</option>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href= "{% url 'generate' %}" method="post">Generate QR codes</a>    
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for = "list">List of Students with below than average attendance</label>
+                <select id = "list" name="student-id" action= "{% url 'generate' %}" method="post" >
+                        {% for defaulter in defaulters %}
+                        <option value="{{defaulter.email}}">{{defaulter.first_name}} {{defaulter.last_name}} {{defaulter.roll_no}}</option>
+                        {% empty %}
+                        <option value="{{defaulter.email}}">Found no defaulter students</option>
+                        {% endfor %}
+                </select>
+            </td>
+        </tr>
+    </table>
+</form>
+{% endblock %}

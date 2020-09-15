@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    {% block meta %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href='{% static "css/create.css" %}'>
+</head>
+{% endblock %}
+<body>
+    <div>
+        {% block heading %}
+            <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">Administrator Controls</a>
+          </nav>
+          {% endblock %}
+    </div>
+        
+    </div>
+    <div>
+        {% block body %}
+
+        {% endblock %}
+    </div>
+</body>
+</html>

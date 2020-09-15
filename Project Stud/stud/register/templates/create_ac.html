@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert {% if message.tags %}alert-{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}danger{% else %}{{ message.tags }}{% endif %}{% endif %}" role="alert">{{ message }}</div>
+  {% endfor %}
+  {% endif %}
+<h1 class = "create_your_account">Create Your Account!</h1>
+<form class = "form" method = "post">
+	{% csrf_token %}
+<table class = "spaces1">
+<tr>
+	<td>
+		<label for = "first_name">First Name</label>
+		<input id = "first_name" type = "text" placeholder = "Enter your first name" name = "first_name">
+	</td>
+	<td>
+		<label for = "last_name">Last Name</label>
+		<input id = "last_name" type = "text" placeholder = "Enter your last name" name = "last_name">
+	</td>
+</tr>
+<tr>
+	<td>
+		<label for = "email">Email</label>
+		<input id = "email" type = "email" placeholder = "Enter your email address" name = "email">
+	</td>
+	<td>
+		<label for = "pwd">Password</label>
+		<input id = "pwd" type = "password" placeholder = "Create a password" name = "password">
+	</td>
+</tr>
+<tr>
+	<td>
+		<label for = "pwd2">Password</label>
+		<input id = "pwd2" type = "password" placeholder = "Confirm password" name = "password2">
+	</td>
+	<td>
+		<label for = "branch">Branch</label>
+		<select name = "b_data">
+			{% for branch in branches %}
+			<option>{{branch.branch_code}}</option>
+			{% endfor %}
+		</select>
+	</td>
+</tr>
+<tr>
+	<td>
+	<button type="submit">Submit</button>
+</td>
+</tr>
+<tr>
+	<td>
+	<a href = "{% url 'home' %}">already have an account? login!</a>
+	</td>
+</tr>
+</table>
+</form>
+{% endblock %}

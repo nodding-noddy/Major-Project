@@ -1,0 +1,69 @@
+input{
+    color:#2c2d2e;
+    border:1px solid #6eb9ff;
+    border-radius:10px;
+    background-color:white;  
+    margin-right:29px;
+    width:400px;
+    height:40px;
+    display:block;
+    padding-right:10px;
+    margin-right : 20px;
+}
+.spaces1{
+    border-collapse:separate;
+    border-spacing:0 15px;
+}
+.form{
+    position:absolute;
+    top:200px;
+    left:450px;
+}
+label{
+    display:block;
+    margin-right:10px;
+}
+input:focus{
+    outline:none;
+}
+select{
+    color:#2c2d2e;
+    border:1px solid #6eb9ff;
+    border-radius:10px;
+    background-color:white;   
+    width:400px;
+    height:40px;
+}
+select:hover{
+    cursor:pointer;
+}
+select:focus{
+    outline:none;
+}
+button{
+    border:1px solid green;
+    color:green;
+    border-radius:10px;
+    height:41px;
+    width:100px;
+  }
+button:hover{
+    border:1px solid green;
+    color:white;
+    background-color:green;
+    border-radius:10px;
+    cursor:pointer;
+  }
+button:focus{
+    outline:none;
+  }
+.spaces{
+    border-collapse:separate;
+    border-spacing:0 25px;
+}
+
+.create_your_account{
+    position:absolute;
+    top:130px;
+    left:450px;
+}
