@@ -16,7 +16,7 @@ import os
 import qrcode
 from django.core.exceptions import ObjectDoesNotExist
 import shutil
-# Create your views here.
+
 email = None
 class Login_form(forms.Form):
     email = forms.CharField(max_length = 30,
@@ -88,7 +88,6 @@ def create_account(request):
         })
 
 def home(request):
-    # email = None
     global email
     try:
         if request.method == 'POST':
@@ -124,15 +123,12 @@ def home(request):
                             defaulters = Student_data.objects.raw("SELECT * FROM student_data WHERE attendance < 4 AND b_code_id = 'IT'")
                         else:
                             students = 'No data registered for students with this branch'
-                            defaulters = 'None'
-                        # students = Student_data.objects.all()
-                        # defaulters = Student_data.objects.filter(attendance__lt = 4)
+                            defaulters = 'None'                       
                         return render(request,'logged_in.html',{
                             'name':acquired.first_name,
                             "students":students,
                             'defaulters': defaulters
-                        })
-                        # return HttpResponseRedirect('logged')
+                        })                       
                     else:
                         return HttpResponseRedirect(reverse('home'),{
                             messages.add_message(request,messages.ERROR,'Incorrect password or username!'),
@@ -153,14 +149,6 @@ def home(request):
                             
                     })
 
-# def logged(request):
-#     students = Student_data.objects.all()
-#     return render(request,'logged_in.html',{
-#                 'name':acquired.first_name,
-#                 "students":students
-#                 })
-    
-
 
 def gen_single(request):
     if request.method == 'POST':
@@ -176,10 +164,8 @@ def gen_single(request):
     return render(request,'failure.html')
 
 def generate(request):
-    # students = Student_data.roll_man.retrieve()
     global email
     admin_branch  = Admin.objects.get(email = email)
-    # students = Student_data.objects.raw("SELECT roll_no FROM student_data WHERE b_code_id = '%s'"%admin_branch.branch_id)
     import psycopg2
     connection = psycopg2.connect(user = '',password = '',
                                 host = '', database = '')
@@ -213,15 +199,9 @@ def generate(request):
         for filename in files:
             filepath = os.path.join(root,filename)
             file_paths.append(filepath)
-    # os.chdir('D:\\Project Stud\\stud\\register\\static')
-    # with ZipFile('qrcode.zip','w') as zip:
-    #     # for file in file_paths:
-    #     zip.write(directory)
+    
     shutil.make_archive('qrcodes','zip', "../%s"%directory.lower())
     return render(request,'success.html',{
         'branch':directory
     }) 
 
-
-def test(request):
-    return render(request,'testing.html')
