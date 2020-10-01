@@ -7,5 +7,4 @@ urlpatterns = [
     path('home',views.home,name='zone'),
     path('welcome',views.gen_single,name='failed'),
     path('create_account',views.create_account,name = 'create_account'),
-    path('testing',views.test)
 ]
